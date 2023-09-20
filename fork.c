@@ -22,7 +22,7 @@ if (child == 0)
 	if (execve(command, args, environ) == -1)
 	{
 		perror(programname);
-		exit(0);
+		exit(2);
 	}
 }
 else if (child < 0)
