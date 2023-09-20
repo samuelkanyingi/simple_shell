@@ -1,6 +1,5 @@
-#include <unistd.h>
-#include <stdio.h>
 #include "listme.h"
+#include <stdbool.h>
 /**
  * main- entry of program
  * Return: 0 if success
@@ -13,29 +12,35 @@ int main(void)
 	char *args[MAX];
 	int argc = 0;
 	char *message = "#cisfun$ ";
-	char *ctrl_d = "\n";
+	bool is_intera = isatty(STDIN_FILENO);
 
 	while (1)
 	{
-	write(1, message, custom_strlen(message));
+		if (is_intera)
+		{
+			write(STDOUT_FILENO, message, custom_strlen(message));
+		}
 	read_getline = getline(&buff_lineptr, &len, stdin);
 	if (read_getline == -1)
 	{
-		write(1, ctrl_d, custom_strlen(ctrl_d));
 		break;
 	}
-	if (buff_lineptr[read_getline - 1] == '\n')
+	if (read_getline > 0 && buff_lineptr[read_getline - 1] == '\n')
 	{
 		buff_lineptr[read_getline - 1] = '\0';
 	}
-	no_argument(buff_lineptr);
+	if (is_intera)
+	{
+	if (custom_strlen(buff_lineptr) == 0)
+	{
+		break;
+	}
+	}
 	tokenize(buff_lineptr, args, &argc);
 	if (argc > 0)
 	{
 		args[argc] = NULL;
-		/*childprocess(args[0], args);*/
-		/*no_argument(command);*/
-		/*handle_me(args);*/
+		handle_me(args);
 		argc = 0;
 	}
 	}
@@ -78,32 +83,10 @@ void handle_me(char *args[])
 void print_env(void)
 {
 	char **env;
-	int i;
-	const char *limit[] = {
-		"USER",
-		"LANG",
-		"SESSION",
-		"COMPIZ_CONFIG_PROFILE",
-		"SHLVL",
-		"HOME",
-		"C_IS",
-		"DESKTOP_SESSION",
-		"LOGNAME",
-		"TERM",
-		"PATH",
-		"DISPLAY",
-		NULL
-	};
+
 	for (env = environ; *env != NULL; ++env)
 	{
-		for (i = 0; limit[i] != NULL; i++)
-		{
-			if (mycustom_strstr(*env, limit[i]) == *env)
-			{
-				write(1, *env, custom_strlen(*env));
-				write(1, "\n", 1);
-				break;
-			}
-		}
+		write(STDOUT_FILENO, *env, custom_strlen(*env));
+		write(1, "\n", 1);
 	}
 }
