@@ -11,9 +11,9 @@ void tokenize(char *linestring, char *args[], int *argc)
 	char *mytokens;
 
 	mytokens = strtok(linestring, " ");
-	for (; mytokens != NULL && *argc < MAX - 1; (*argc)++)
+	if (mytokens != NULL)/* && *argc < MAX - 1; (*argc)++)*/
 	{
-		args[(*argc)] = mytokens;
-		mytokens = strtok(NULL, " ");
+		args[(*argc)++] = mytokens;
+		/*mytokens = strtok(NULL, " ");*/
 	}
 }

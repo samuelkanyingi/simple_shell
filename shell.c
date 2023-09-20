@@ -13,8 +13,7 @@ int main(void)
 	ssize_t read_getline;
 	char *args[MAX];
 	int argc = 0;
-	/*char *command;*/
-	char *message = "$ ";
+	char *message = "#cisfun$ ";
 	char *ctrl_d = "\n";
 
 	while (1)
@@ -30,13 +29,14 @@ int main(void)
 	{
 		buff_lineptr[read_getline - 1] = '\0';
 	}
+	no_argument(buff_lineptr);
 	tokenize(buff_lineptr, args, &argc);
 	if (argc > 0)
 	{
 		args[argc] = NULL;
 		/*childprocess(args[0], args);*/
-		handle_me(args);
-		/*handle_semicolon(args, &argc);*/
+		/*no_argument(command);*/
+		/*handle_me(args);*/
 		argc = 0;
 	}
 	}
@@ -66,10 +66,6 @@ void handle_me(char *args[])
 	{
 		print_env();
 	}
-	/*else if(custom_strcmp(args[0], "setenv") == 0 || argc > 0)*/
-	/*{*/
-		/*setenvme(argc,args);*/
-	/*}*/
 	else
 	{
 		childprocess(args[0], args);

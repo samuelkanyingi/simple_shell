@@ -8,7 +8,7 @@ void no_argument(char *command)
 	char *programname = "./shell";
 	int status;
 	pid_t child;
-	char *args[1];
+	char *args[2];
 	/*if (access(command, X_OK) != 0)*/
 	/*{*/
 	/*write(1,"command not found", strlen("command not found"));*/
