@@ -22,7 +22,7 @@ int main(void)
 	read_getline = getline(&buff_lineptr, &len, stdin);
 	if (read_getline == -1)
 	{
-		write(1, ctrl_d, strlen(ctrl_d));
+		write(1, ctrl_d, custom_strlen(ctrl_d));
 		break;
 	}
 	if (buff_lineptr[read_getline - 1] == '\n')

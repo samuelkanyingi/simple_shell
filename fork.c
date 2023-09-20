@@ -12,7 +12,7 @@ pid_t child;
 
 /*if (access(command, X_OK) != 0)*/
 /*{*/
-/*write(1,"command not found", strlen("command not found"))*/
+/*write(1,"command not found", custom_strlen("command not found"))*/
 /*return;*/
 /*}*/
 child = fork();

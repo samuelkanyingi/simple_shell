@@ -11,7 +11,7 @@ void no_argument(char *command)
 	char *args[2];
 	/*if (access(command, X_OK) != 0)*/
 	/*{*/
-	/*write(1,"command not found", strlen("command not found"));*/
+	/*write(1,"command not found", custom_strlen("command not found"));*/
 	/*}*/
 	child = fork();
 	if (child == 0)
