@@ -12,7 +12,7 @@ size_t custom_strlen(const char *string)
 
 	for (; string[len] != '\0'; len++)
 	{
-		len = len + 1;
+		/*len = len + 1;*/
 	}
 	return (len);
 }
