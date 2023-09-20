@@ -1,5 +1,4 @@
 #include "listme.h"
-#include <stdbool.h>
 /**
  * main- entry of program
  * Return: 0 if success
@@ -12,13 +11,13 @@ int main(void)
 	char *args[MAX];
 	int argc = 0;
 	char *message = "#cisfun$ ";
-	bool is_intera = isatty(STDIN_FILENO);
+	bool interactive_mode = isatty(STDIN_FILENO);
 
 	while (1)
 	{
-		if (is_intera)
+		if (interactive_mode)
 		{
-			write(STDOUT_FILENO, message, custom_strlen(message));
+			write(STDOUT_FILENO, message, custom_mystrlen(message));
 		}
 	read_getline = getline(&buff_lineptr, &len, stdin);
 	if (read_getline == -1)
@@ -29,18 +28,18 @@ int main(void)
 	{
 		buff_lineptr[read_getline - 1] = '\0';
 	}
-	if (is_intera)
+	if (interactive_mode)
 	{
-	if (custom_strlen(buff_lineptr) == 0)
+	if (custom_mystrlen(buff_lineptr) == 0)
 	{
 		break;
 	}
 	}
-	tokenize(buff_lineptr, args, &argc);
+	tokenize_tok(buff_lineptr, args, &argc);
 	if (argc > 0)
 	{
 		args[argc] = NULL;
-		handle_me(args);
+		handle_me_proper(args);
 		argc = 0;
 	}
 	}
@@ -51,22 +50,22 @@ free(buff_lineptr);
  * handle_me- handle user commands
  * @args : array of string having command and args
  */
-void handle_me(char *args[])
+void handle_me_proper(char *args[])
 {
-	if (custom_strcmp(args[0], "exit") == 0)
+	if (custom_strcompare(args[0], "exit") == 0)
 	{
 		if (args[1] != NULL)
 		{
-			int exit_status = custom_atoi(args[1]);
+			int exit_stat = mycustom_atoi(args[1]);
 
-			exit(exit_status);
+			exit(exit_stat);
 		}
 		else
 		{
 			exit(0);
 		}
 	}
-	else if (custom_strcmp(args[0], "env") == 0)
+	else if (custom_strcompare(args[0], "env") == 0)
 	{
 		print_env();
 	}
@@ -84,9 +83,9 @@ void print_env(void)
 {
 	char **env;
 
-	for (env = environ; *env != NULL; ++env)
+	for (env = environ; *env != NULL; env++)
 	{
-		write(STDOUT_FILENO, *env, custom_strlen(*env));
+		write(STDOUT_FILENO, *env, custom_mystrlen(*env));
 		write(1, "\n", 1);
 	}
 }
