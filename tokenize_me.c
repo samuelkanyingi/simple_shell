@@ -1,7 +1,7 @@
 #include "listme.h"
 
 /**
- * tokenize - function to tokenize a string
+ * tokenize_tok - function to tokenize a string
  * @linestring: string to tokenize
  * @args: store here tokenized string
  * @argc: argument count to keep track
