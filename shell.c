@@ -47,7 +47,7 @@ free(buff_lineptr);
 	return (0);
 }
 /**
- * handle_me- handle user commands
+ * handle_me_proper- handle user commands
  * @args : array of string having command and args
  */
 void handle_me_proper(char *args[])
@@ -67,7 +67,7 @@ void handle_me_proper(char *args[])
 	}
 	else if (custom_strcompare(args[0], "env") == 0)
 	{
-		print_env();
+		print_env_list();
 	}
 	else
 	{
@@ -76,10 +76,10 @@ void handle_me_proper(char *args[])
 }
 
 /**
- * print_env - print user environment
+ * print_env_list - print user environment
  */
 
-void print_env(void)
+void print_env_list(void)
 {
 	char **env;
 
