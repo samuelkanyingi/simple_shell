@@ -8,16 +8,11 @@
 void childprocess(char *command, char *args[])
 {
 char *programname = "./shell";
-pid_t child;
+pid_t child_fork;
 
-/*if (access(command, X_OK) != 0)*/
-/*{*/
-/*write(1,"command not found", custom_strlen("command not found"))*/
-/*return;*/
-/*}*/
-child = fork();
+child_fork = fork();
 
-if (child == 0)
+if (child_fork == 0)
 {
 	if (execve(command, args, environ) == -1)
 	{
@@ -25,7 +20,7 @@ if (child == 0)
 		exit(2);
 	}
 }
-else if (child < 0)
+else if (child_fork < 0)
 {
 	perror(programname);
 }
