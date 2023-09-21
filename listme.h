@@ -8,16 +8,13 @@
 #include <stdlib.h>
 #include <string.h>
 #define MAX 100
+#include <stdbool.h>
 extern char **environ;
 void childprocess(char *command, char *args[]);
-void no_argument(char *command);
 void print_env(void);
-void handle_me(char *args[]);
-void setenvme(int argc, char *args[]);
-void handle_semicolon(char *args[], int *argc);
-size_t custom_strlen(const char *string);
-int custom_strcmp(const char *string1, const char *string2);
-char *mycustom_strstr(const char *hay_stack, const char *needle);
-int custom_atoi(const char *str);
-void tokenize(char *linestring, char *args[], int *argc);
+void handle_me_proper(char *args[]);
+size_t custom_mystrlen(const char *string);
+int custom_strcompare(const char *string1, const char *string2);
+int mycustom_atoi(const char *str);
+void tokenize_tok(char *linestring, char *args[], int *argc);
 #endif
