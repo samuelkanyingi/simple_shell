@@ -1,6 +1,6 @@
 #include "listme.h"
 /**
- * custom_strlen- function to get length of string
+ * custom_mystrlen- function to get length of string
  * @string: string to get length
  * Return:length of string
  */
@@ -17,7 +17,7 @@ size_t custom_mystrlen(const char *string)
 	return (len);
 }
 /**
- * custom_strcmp - function that compares two strings
+ * custom_strcompare - function that compares two strings
  * @string1: first string
  * @string2:second string
  * Return: intger as outcome of comparison
