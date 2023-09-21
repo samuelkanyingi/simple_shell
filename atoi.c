@@ -1,6 +1,6 @@
 #include "listme.h"
 /**
- * custom_atoi -convert string to integer
+ * mycustom_atoi -convert string to integer
  * @string:string to convert
  * Return:integer
  */
