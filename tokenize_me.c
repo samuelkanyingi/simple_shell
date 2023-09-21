@@ -4,14 +4,14 @@
  * tokenize - function to tokenize a string
  * @linestring: string to tokenize
  * @args: store here tokenized string
- * @argc: number of argument count
+ * @argc: argument count to keep track
  */
-void tokenize(char *linestring, char *args[], int *argc)
+void tokenize_tok(char *linestring, char *args[], int *argc)
 {
 	char *mytokens;
 
 	mytokens = strtok(linestring, " ");
-	while (mytokens != NULL)/* && *argc < MAX - 1; (*argc)++)*/
+	while (mytokens != NULL)
 	{
 		args[(*argc)++] = mytokens;
 		mytokens = strtok(NULL, " ");
