@@ -4,14 +4,14 @@
  * @string:string to convert
  * Return:integer
  */
-int custom_atoi(const char *string)
+int mycustom_atoi(const char *string)
 {
 	int num_sign = 1;
 	int res = 0;
 
 	for (; *string == ' '; string++)
 	{
-		string++;
+
 	}
 	if (*string == '-')
 	{
