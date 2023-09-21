@@ -11,7 +11,7 @@
 #include <stdbool.h>
 extern char **environ;
 void childprocess(char *command, char *args[]);
-void print_env(void);
+void print_env_list(void);
 void handle_me_proper(char *args[]);
 size_t custom_mystrlen(const char *string);
 int custom_strcompare(const char *string1, const char *string2);
